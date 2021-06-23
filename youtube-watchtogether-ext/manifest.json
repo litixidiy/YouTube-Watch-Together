@@ -1,0 +1,27 @@
+{
+   "name": "youtube-watchtogether",
+   "version": "0.3",
+   "description": "Watch Together!",
+   "manifest_version": 2,
+   "background": {
+      "scripts": ["background.js","socket.io.js"],
+      "persistent": false
+    },
+   "permissions": ["storage", "tabs", "activeTab", "declarativeContent"],
+   "page_action": {
+      "default_popup": "popup.html",
+      "default_title": "Watch Together!",
+      "default_icons": {
+         "16": "images/icon16.png",
+         "32": "images/icon32.png",
+         "48": "images/icon48.png",
+         "128": "images/icon128.png"
+      }
+   },
+   "icons": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+   }
+}
