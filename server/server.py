@@ -30,7 +30,9 @@ def handle_message(json, methods=['GET', 'POST']):
     :return: None
     """
     data = dict(json)
-    '''if "time" in data:
+    if "time" in data:
+        print(data["time"])
+        '''
         db = DataBase()
         db.save_message(data["name"], data["message"])'''
 
