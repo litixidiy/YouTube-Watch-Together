@@ -15,10 +15,11 @@ print("[Server Started] : " +config.Config.ADRESS )
 @socketio.on('connect')
 def test_connect():
     print('[Client Connected]')
+    socketio.emit("Connected")
 
 @socketio.on('disconnect')
 def test_disconnect():
-    print('Client disconnected')
+    print('[Client Disconnected]')
 
 @socketio.on('event')
 def handle_message(json, methods=['GET', 'POST']):
