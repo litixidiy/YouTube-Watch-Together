@@ -1,3 +1,4 @@
 .vscode/
 server/.vscode/
 server/.env
+server/__pycache__/
