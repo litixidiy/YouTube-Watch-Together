@@ -4,7 +4,7 @@
    "description": "Watch Together!",
    "manifest_version": 2,
    "background": {
-      "scripts": ["background.js","socket.io.js"],
+      "scripts": ["background.js","socket.io.js","jquery-3.6.0.js"],
       "persistent": false
     },
    "permissions": ["storage", "tabs", "activeTab", "declarativeContent"],

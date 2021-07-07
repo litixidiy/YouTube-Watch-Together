@@ -25,6 +25,17 @@ chrome.runtime.onInstalled.addListener((reason) => {
 	  });
 	}*/
 
+	$(document).ready(function() {
+      
+        var socket = io.connect('http://127.0.0.1:5000');
+        socket.on('connect', function(res) {
+            console.log("socketio imported");
+			socket.emit('test event', {data: 'pls work'});
+        });
+
+    });
+
+	/*
 	var socket = io.connect('http://127.0.0.1:5000');
 	
 	try {
@@ -36,6 +47,6 @@ chrome.runtime.onInstalled.addListener((reason) => {
 		console.error(error);
 		// expected output: ReferenceError: nonExistentFunction is not defined
 		// Note - error messages will vary depending on browser
-	  }
+	  }*/
 });
 
