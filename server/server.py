@@ -8,14 +8,13 @@ API
 Namespace:
 time - recieves the time and make adjustment if needed
 
-
 connect : is triggered when the client is successfully connected to the server
 message : is triggered when the client sends data
+join : is tiggered when the client 
 disconnect : is triggered when the client loses the connection with the server, 
     -closing the browser, dropping the connection, etc.
 
 '''
-
 
 # Creating an instance of Flask
 app = Flask(__name__)
@@ -23,13 +22,19 @@ app.config['SECRET_KEY'] = config.Config.SECRET_KEY
 
 socketio = SocketIO(app, logger=True, engineio_logger=True,
                     cors_allowed_origins='*')
+
+
+socketio.room_users = {}
+socketio.reqid_info = {}
+
+
 print("[Server Started] : " + config.Config.ADRESS)
 
 # Communication Functions To The Client
 
 
 @socketio.on('connect')
-def test_connect():
+def connect_handler():
     print('[Client Connected]')
     socketio.emit("Connected")
 
@@ -38,11 +43,16 @@ def test_connect():
 def test_disconnect():
     print('[Client Disconnected]')
 
+@socketio.on('join')
+def handle_join(data):
+    username = data["username"]
+    room = data["room"]
+    join_room(room)
+    print(f"{username} Joined Chat {room}")
+
 
 @socketio.on('event')
 def handle_message(json):
-
-
     data = dict(json)
     if "time" in data:
         print(data["time"])
